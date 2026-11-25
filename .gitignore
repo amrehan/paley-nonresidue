@@ -1,0 +1,4 @@
+work/
+.lake/
+**/.lake/
+.DS_Store
