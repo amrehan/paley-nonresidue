@@ -1,15 +1,15 @@
 # Large Least Quadratic Non-Residues and Paley Cliques from GRH (Lean 4)
 
-This repository contains a Lean 4 / Mathlib formalization of **Montgomery's theorem (1971)**: assuming the Generalized Riemann Hypothesis (GRH) for Dirichlet $L$-functions, there are infinitely many primes $p$ whose least quadratic non-residue exceeds $c \log p \log\log p$. By connecting to Levent Alpöge's Lean proof of GRH ([leanprover-community/riemann-hypothesis](https://github.com/leanprover-community/riemann-hypothesis)), the result is also established **unconditionally**, together with the corresponding bound for cliques in Paley graphs. It was developed with assistance from Claude Opus (Anthropic). Correctness does not rest on that, since every theorem is checked by Lean's kernel.
+This repository contains a Lean 4 / Mathlib formalization of **Montgomery's theorem (1971)**: assuming the Generalized Riemann Hypothesis (GRH) for Dirichlet $L$-functions, there are infinitely many primes $p$ whose least quadratic non-residue exceeds $c \log p \cdot \log\log p$. By connecting to Levent Alpöge's Lean proof of GRH ([leanprover-community/riemann-hypothesis](https://github.com/leanprover-community/riemann-hypothesis)), the result is also established **unconditionally**, together with the corresponding bound for cliques in Paley graphs. It was developed with assistance from Claude Opus (Anthropic). Correctness does not rest on that, since every theorem is checked by Lean's kernel.
 
 ### What's formalized
 
-- **Many small squares:** For every $X$ there is a prime $p > X$ with $p \equiv 1 \pmod 8$ such that every $1 \le n \le \tfrac18 \log p \log\log p$ is a square modulo $p$.
-- **Least quadratic non-residue:** For infinitely many primes $p$, every quadratic non-residue $n$ mod $p$ satisfies $n > \tfrac18 \log p \log\log p$.
-- **Paley graphs:** For every $X$ there is a prime $p > X$, $p \equiv 1 \pmod 8$, whose Paley graph contains a clique with more than $\tfrac18 \log p \log\log p$ vertices (namely $\{0, 1, \dots, k\}$).
+- **Many small squares:** For every $X$ there is a prime $p > X$ with $p \equiv 1 \pmod 8$ such that every $1 \le n \le \tfrac18 \log p \cdot \log\log p$ is a square modulo $p$.
+- **Least quadratic non-residue:** For infinitely many primes $p$, every quadratic non-residue $n$ mod $p$ satisfies $n > \tfrac18 \log p \cdot \log\log p$.
+- **Paley graphs:** For every $X$ there is a prime $p > X$, $p \equiv 1 \pmod 8$, whose Paley graph contains a clique with more than $\tfrac18 \log p \cdot \log\log p$ vertices (namely $\{0, 1, \dots, k\}$).
 - **GRH square-root bound, uniform in the modulus:** $\bigl|\sum_{n \le u} \Lambda(n)\chi(n) - [\chi = 1]\,u\bigr| \le C \sqrt u \,\log^2(Nu)$ for every primitive $\chi$ mod $N$ and $u \ge 4$.
 
-Unconditionally, the previous best bound for both the least non-residue and the Paley clique number (infinitely often) was of order $\log p \log\log\log p$ (Graham–Ringrose 1990). Montgomery's $\log p \log\log p$ was known only under GRH.
+Unconditionally, the previous best bound for both the least non-residue and the Paley clique number (infinitely often) was of order $\log p \cdot \log\log\log p$ (Graham–Ringrose 1990). Montgomery's $\log p \cdot \log\log p$ was known only under GRH.
 
 Every theorem depends only on the standard Lean axioms (`[propext, Classical.choice, Quot.sound]`): no `sorry`, no `native_decide`, and no extra axioms. You can browse the exact Lean statements in **[STATEMENTS.md](STATEMENTS.md)**.
 
@@ -54,17 +54,17 @@ The upstream commit is pinned in `reproduce.sh`. The script will fail on any Lea
 | Path | Description |
 | --- | --- |
 | `Paley/PsiBound.lean` | GRH ⇒ $\lvert\psi_0(u,\chi)\rvert \le C\sqrt u\log^2(Nu)$ for primitive $\chi$, uniform in $N$ |
-| `Paley/Squares.lean` | The modulus $M = 8\prod_{3 \le q \le y} q$; the kernel of squaring on $(\mathbb Z/M)^\times$ has size $\le 2^{\#\{q\} + 3}$; quadratic reciprocity: a prime that is a square unit mod $M$ has all of $1, \dots, y$ as squares |
+| `Paley/Squares.lean` | The modulus $M = 8\prod_{3 \le q \le y} q$; the kernel of squaring on $(\mathbb Z/M)^\times$ has size at most $2^{k+3}$, where $k$ is the number of odd primes $\le y$; quadratic reciprocity: a prime that is a square unit mod $M$ has all of $1, \dots, y$ as squares |
 | `Paley/Count.lean` | Counting in the subgroup of squares by character orthogonality |
 | `Paley/Main.lean` | Imprimitive vs. primitive characters; Montgomery's argument: a prime $p \in (\sqrt u, u]$ that is a square unit mod $M$ |
-| `Paley/Final.lean` | The choice $y = \lfloor \log u \log\log u / 8\rfloor$ and the asymptotics; `many_squares` |
+| `Paley/Final.lean` | The choice $y = \lfloor \log u \cdot \log\log u / 8\rfloor$ and the asymptotics; `many_squares` |
 | `Paley/Clique.lean` | Paley graphs and `paley_clique` |
 | `Unconditional/Unconditional.lean` | Unconditional theorems via Alpöge's `LFunction_eq_zero_re_of_isPrimitive` |
 | `scripts/AxiomsConditional.lean` | `#print axioms` for the conditional theorems |
 
 ## Credits
 
-- **Mathematics:** H. L. Montgomery, *Topics in Multiplicative Number Theory*, LNM 227 (1971), where the bound $n_2(p) \gg \log p \log\log p$ infinitely often is proved under GRH; S. W. Graham and C. J. Ringrose, *Lower bounds for least quadratic non-residues* (1990), the previous unconditional bound.
+- **Mathematics:** H. L. Montgomery, *Topics in Multiplicative Number Theory*, LNM 227 (1971), where the bound $n_2(p) \gg \log p \cdot \log\log p$ infinitely often is proved under GRH; S. W. Graham and C. J. Ringrose, *Lower bounds for least quadratic non-residues* (1990), the previous unconditional bound.
 - **GRH for Dirichlet $L$-functions in Lean:** Levent Alpöge, via [leanprover-community/riemann-hypothesis](https://github.com/leanprover-community/riemann-hypothesis). The hypothesis is his `PrimitiveDirichletLZerosOnLine`, and the explicit formula and zero counting come from his archive's `Development` library.
 - **Related:** [amrehan/grh-miller](https://github.com/amrehan/grh-miller) (deterministic Miller test and Bach's constant from the same GRH formalization).
 
