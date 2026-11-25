@@ -15,7 +15,7 @@ The constant: $1/8$ is chosen for convenience. With $\pi(x) \sim x/\log x$ the s
 
 ## What is and is not new
 
-The statement "$n_2(p) > c\log p \cdot \log\log p$ for infinitely many $p$" was previously proved only assuming GRH (Montgomery). Unconditionally the best published bound was $\gg \log p \cdot \log\log\log p$ (Graham–Ringrose). Alpöge's theorem makes Montgomery's result unconditional, and this repository is a formal proof of that. The argument itself is Montgomery's. Alpöge's methods (theta-lift chains, slope inequalities) are not used, only his final theorem and the analytic lemmas in his archive.
+The statement that $n_2(p) > c \log p \cdot \log\log p$ for infinitely many primes $p$ was previously proved only assuming GRH (Montgomery). Unconditionally the best published bound was $\gg \log p \cdot \log\log\log p$ (Graham–Ringrose). Alpöge's theorem makes Montgomery's result unconditional, and this repository is a formal proof of that. The argument itself is Montgomery's. Alpöge's methods (theta-lift chains, slope inequalities) are not used, only his final theorem and the analytic lemmas in his archive.
 
 ## Trust model
 

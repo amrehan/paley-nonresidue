@@ -17,7 +17,7 @@ Every theorem depends only on the standard Lean axioms (`[propext, Classical.cho
 
 - **No new math:** This is a formalization of Montgomery's 1971 argument, made unconditional by Alpöge's theorem. The unconditional statement is new only because GRH is now a theorem. The insight in Alpöge's proof (theta-lift chains standing in for Stepanov's auxiliary polynomials) is not used here. Only its conclusion is.
 - **The constant:** We prove the bound with $c = 1/8$. The argument gives any $c < 1/(4\log 2) \approx 0.36$ with a sharper prime-counting bound. We use Mathlib's Chebyshev bound $\pi(x) \le (\log 4 + 1)\,x/\log x$ for large $x$.
-- **Ineffective in $X$:** The analytic constant $C$ comes from existential statements in Alpöge's archive, so the theorems say "for every $X$ there is $p > X$" without an explicit bound on $p$.
+- **Ineffective in $X$:** The analytic constant $C$ comes from existential statements in Alpöge's archive, so the theorems give, for every $X$, a suitable prime $p > X$ without an explicit bound on $p$.
 - **Hypothesis:** The conditional results assume *only* `PrimitiveDirichletLZerosOnLine` (GRH for primitive Dirichlet $L$-functions), taken verbatim from Alpöge's `src/Statements.lean`.
 
 ## Usage
